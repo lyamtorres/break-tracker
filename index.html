@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.min.css">
+    <title>Traqueur de pauses NoctamBU</title>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="display-4 text-center">Traqueur de pauses NoctamBU</h1> 
+        <form id="students-form">
+            <div class="form-group">
+                <label for="surname">Nom</label>
+                <input type="text" id="surname" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="name">Prénom</label>
+                <input type="text" id="name" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="break-time">Heure de sortie</label>
+                <input type="time" id="break-time" class="form-control">
+            </div>
+        </form>
+        <input type="submit" value="Ajouter étudiant" class="btn btn-primary btn-block">
+        <table class="table table-striped mt-5">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Heure de sortie</th>
+                    <th>Temps restant</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="students-list"></tbody>
+        </table>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
