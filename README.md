@@ -1,1 +1,1 @@
-# students-pause-tracker
+# Student Pause Tracker
