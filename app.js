@@ -1,49 +1,71 @@
-// student class: Represents a student
-class student {
-    constructor(surname, name, exitTime) {
-        this.surname = surname;
+class Student {
+    constructor(name, cardNumber, exitTime, breakType) {
         this.name = name;
+        this.cardNumber = cardNumber;
         this.exitTime = exitTime;
+        this.breakType = breakType;
     }
 }
 
-// userInterface Class: Handles UI tasks
-class userInterface {
+class UserInterface {
     static displayStudents() {
-        const storedStudents = [
-            {
-                surname: 'Rivera',
-                name: 'Carlos',
-                exitTime: '18:30'
-            },
-            {
-                surname: 'Montenegro',
-                name: 'José',
-                exitTime: '20:45'
-            }
-        ];
-
+        const storedStudents = [];
         const students = storedStudents;
 
-        students.forEach((student) => userInterface.addStudentToList(student));
+        students.forEach((student) => UserInterface.addStudentToList(student));
     }
 
-    static addBookToList(student) {
+    static addStudentToList(student) {
         const list = document.querySelector('#students-list');
         const row = document.createElement('tr');
 
         row.innerHTML = `
-            <td>${student.surname}</td>
             <td>${student.name}</td>
+            <td>${student.cardNumber}</td>
             <td>${student.exitTime}</td>
-            <td></td>
+            <td>${student.breakType}</td>
+            <td></td>          
             <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
         `;
-
         list.appendChild(row);
+    }
+
+    static clearFields() {
+        document.querySelector('#name').value = '';
+        document.querySelector('#card-number').value = '';
+        document.querySelector('#exit-time').value = '';
+        
+    }
+
+    static deleteStudent(el) {
+        if (el.classList.contains('delete')) {
+            el.parentElement.parentElement.remove();
+        }
     }
 }
 
-// store class: Handles storage
+// Muestra estudiante en la pantalla
+document.addEventListener('DOMContentLoaded', UserInterface.displayStudents());
 
-// event class: Display students, add a student, remove a student
+// Agrega estudiante a la lista
+document.querySelector('#students-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = document.querySelector('#name').value;
+    const cardNumber = document.querySelector('#card-number').value;
+    const exitTime = document.querySelector('#exit-time').value;
+    const breakType = document.querySelector('#break-type').value;
+    const student = new Student(name, cardNumber, exitTime, breakType);
+
+    if (name === '' || cardNumber === '' || exitTime === '') {
+        alert("Tous les champs ne sont pas remplis !");
+    } else {
+        UserInterface.addStudentToList(student);
+        UserInterface.clearFields();
+    }
+});
+
+// Elimina estudiante de la lista
+document.querySelector('#students-list').addEventListener('click', (e) => {
+    UserInterface.deleteStudent(e.target);
+});

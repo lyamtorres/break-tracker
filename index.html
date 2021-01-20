@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,26 +11,34 @@
         <h1 class="display-4 text-center">Traqueur de pauses NoctamBU</h1> 
         <form id="students-form">
             <div class="form-group">
-                <label for="surname">Nom</label>
-                <input type="text" id="surname" class="form-control">
+                <label for="name">Nom / Prénom</label>
+                <input type="text" id="name" class="form-control">
             </div>
             <div class="form-group">
-                <label for="name">Prénom</label>
-                <input type="text" id="name" class="form-control">
+                <label for="card-number">Numéro de carte</label>
+                <input type="number" id="card-number" class="form-control">
             </div>
             <div class="form-group">
                 <label for="exit-time">Heure de sortie</label>
                 <input type="time" id="exit-time" class="form-control">
             </div>
+            <div class="form-group">
+                <label for="break-type" style="padding-right: 1em">Temps de pause</label>
+                <select id="break-type">
+                    <option value="10:00">10 minutes</option>
+                    <option value="45:00">45 minutes</option>
+                </select>
+            </div>
+            <input type="submit" value="Ajouter étudiant" class="btn btn-primary btn-block">
         </form>
-        <input type="submit" value="Ajouter étudiant" class="btn btn-primary btn-block">
+        
         <table class="table table-striped mt-5">
             <thead>
                 <tr>
-                    <th>Nom</th>
-                    <th>Prénom</th>
+                    <th>Nom / Prénom</th>
+                    <th>Numéro de carte</th>
                     <th>Heure de sortie</th>
-                    <th>Temps restant</th>
+                    <th>Temps de pause</th>
                     <th></th>
                 </tr>
             </thead>
